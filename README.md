@@ -2,16 +2,12 @@
 
 ## Cài đặt
 
-Khuyến nghị dùng Python 3.10–3.13. Python 3.14 hiện chưa tương thích với `gensim` 4.x trong dự án này, nên `pip install -r requirements.txt` có thể fail khi build native extension.
-
 ```bash
 python3.12 -m venv .venv
 . .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
-
-Không cần Java hay SPMF: FI được khai thác bằng `mlxtend`, HUI bằng EFIM của thư viện `pami`.
 
 ## Chạy
 
@@ -62,9 +58,8 @@ PV-DBOW, d = 128, `min_count = 0`, 50 epoch; Linear SVM C = 1; accuracy và F1-m
 
 Phần này dựa vào việc nối `food.txt` về CSDL FoodMart gốc (notebook 01). Bước nối này cũng cho utility thật của Food để chạy Hui2Vec trên Food.
 
-## Điểm khác bài báo (cần ghi trong báo cáo)
-
-- Nhãn Foodmart: giỏ giá trị cao (tổng utility ≥ trung vị). Bài Hui2Vec không công bố nhãn; các nhãn thật trong CSDL FoodMart đều chỉ cho khoảng 50% (notebook 01).
+## Điểm khác bài báo 
+- Nhãn Foodmart: giỏ giá trị cao (tổng utility ≥ trung vị), do bài Hui2Vec không công bố nhãn (notebook 01, mục 3).
 - HUI trên Food giới hạn tối đa 2 item, vì giỏ quá dài làm số HUI bùng nổ (notebook 03).
 - Elbow method cụ thể hoá thành: ngưỡng đầu tiên (từ cao xuống thấp) mà số pattern tăng gấp đôi trở lên.
 - Token FI/HUI được thêm tiền tố `p` (`p1, p2, …`) để không trùng tên với mã item. File FI của repo Trans2Vec đánh số FI từ 1, trùng dải số với item.
